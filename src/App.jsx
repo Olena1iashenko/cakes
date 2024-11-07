@@ -3,19 +3,17 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProductList from "./components/ProductList";
 import Cart from "./components/Cart";
 import Navbar from "./components/Navbar";
-import Carousel from "./components/Carousel";
-import Footer from "./components/Footer";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
     <Router>
       <Navbar />
-      <Carousel />
       <Routes>
         <Route path="/" element={<ProductList />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
-      <Footer />
     </Router>
   );
 }
