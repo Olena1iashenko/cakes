@@ -15,44 +15,65 @@ const Cart = () => {
   );
 
   return (
-    <div>
-      <h1>Your Cart</h1>
+    <div className="p-6 max-w-3xl mx-auto">
+      <h1 className="text-2xl font-bold mb-4 text-center">Your Cart</h1>
       {cartItems.length === 0 ? (
-        <p>No items in cart.</p>
+        <p className="text-center text-gray-500">No items in cart.</p>
       ) : (
-        <>
+        <div className="space-y-4 gap-2">
           {cartItems.map((item) => (
             <div
               key={item.id}
-              style={{
-                display: "flex",
-                gap: "10px",
-                padding: "10px",
-                alignItems: "center",
-              }}
+              className="flex flex-col sm:flex-row items-center justify-between bg-white p-4 rounded-lg shadow-md"
             >
-              <h2>{item.productName}</h2>
-              <p>Price: ${item.price}</p>
-              <button
-                onClick={() => dispatch(decrementItemCount({ id: item.id }))}
-              >
-                -
-              </button>
-              <p>Count: {item.count}</p>
-              <button
-                onClick={() => dispatch(incrementItemCount({ id: item.id }))}
-              >
-                +
-              </button>
-              <button onClick={() => dispatch(removeFromCart(item.id))}>
-                Remove
-              </button>
+              <div className="flex flex-col sm:flex-row items-center sm:space-x-4 w-full sm:w-auto max-w-[250px]">
+                <h2 className="text-lg font-semibold justify-start">
+                  {item.productName}
+                </h2>{" "}
+              </div>
+
+              <div className="flex items-center gap-2 ml-4">
+                <p className="text-gray-600">Price: ${item.price}</p>
+
+                <div className="flex items-center gap-2 mt-2 sm:mt-0">
+                  <button
+                    className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-1 px-2 rounded-full"
+                    onClick={() =>
+                      dispatch(decrementItemCount({ id: item.id }))
+                    }
+                  >
+                    -
+                  </button>
+                  <p className="text-gray-800">{item.count}</p>
+                  <button
+                    className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-1 px-2 rounded-full"
+                    onClick={() =>
+                      dispatch(incrementItemCount({ id: item.id }))
+                    }
+                  >
+                    +
+                  </button>
+                </div>
+                <button
+                  className="text-red-500 hover:text-red-700 mt-2 sm:mt-0"
+                  onClick={() => dispatch(removeFromCart(item.id))}
+                >
+                  Remove
+                </button>
+              </div>
             </div>
           ))}
-          <p>Total: ${total}</p>
-        </>
+          <div className="text-lg font-bold mt-6 text-right">
+            Total: ${total.toFixed(2)}
+          </div>
+          <button
+            className="w-full bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 mt-4"
+            onClick={() => dispatch(clearCart())}
+          >
+            Clear Cart
+          </button>
+        </div>
       )}
-      <button onClick={() => dispatch(clearCart())}>Clear Cart</button>
     </div>
   );
 };

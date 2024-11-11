@@ -1,12 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// class CartItem {
-//   constructor(product) {
-//     this.count = 1;
-//     this.product = product;
-//   }
-// }
-
 const initialState = {
   items: [],
 };
