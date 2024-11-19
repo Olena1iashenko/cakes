@@ -1,63 +1,65 @@
 import { TECarousel, TECarouselItem } from "tw-elements-react";
 
+const slides = [
+  {
+    id: 1,
+    src: "/images/1.jpeg",
+    label: "First slide label",
+    content: "Some representative placeholder content for the first slide.",
+  },
+  {
+    id: 2,
+    src: "/images/2.jpeg",
+    label: "Second slide label",
+    content: "Some representative placeholder content for the second slide.",
+  },
+  {
+    id: 3,
+    src: "/images/3.jpeg",
+    label: "Third slide label",
+    content: "Some representative placeholder content for the third slide.",
+  },
+];
+
 const Carousel = () => {
   return (
-    <>
-      <TECarousel
-        showControls
-        showIndicators
-        crossfade
-        ride="carousel"
-        className="relative w-full overflow-hidden"
-      >
-        <div className="relative flex w-full overflow-hidden">
-          {/* Slide 1 */}
-          <TECarouselItem itemID={1} className="relative w-full shrink-0">
+    <TECarousel
+      showControls
+      showIndicators
+      crossfade
+      ride="carousel"
+      theme={{
+        indicator:
+          "mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-black bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[200ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none",
+      }}
+    >
+      <div className="relative w-full h-96 bg-gradient-to-br from-gray-900 to-gray-400 after:clear-both after:block after:content-['']">
+        {slides.map((slide) => (
+          <TECarouselItem
+            key={slide.id}
+            itemID={slide.id}
+            className="absolute h-96 transition-all object-contain pl-40 pr-40"
+          >
             <img
-              src="/images/1.jpeg"
-              className="block w-full h-[50vh] object-cover"
-              alt="First slide"
+              src={slide.src}
+              onError={(e) => (e.target.src = "/images/placeholder.jpeg")}
+              className="block w-full h-full object-cover"
+              alt={slide.label}
             />
-            <div className="absolute inset-x-[15%] bottom-5 py-5 text-center text-black">
-              <h5 className="text-xl font-bold">First slide label</h5>
-              <p>
-                Some representative placeholder content for the first slide.
-              </p>
+            <div
+              className="absolute inset-x-[-150%] bottom-5 py-5  text-white"
+              style={{
+                left: "450px",
+                width: "35vh",
+              }}
+            >
+              <h5 className="text-xl font-bold">{slide.label}</h5>
+              <p>{slide.content}</p>
             </div>
           </TECarouselItem>
-
-          {/* Slide 2 */}
-          <TECarouselItem itemID={2} className="relative w-full shrink-0">
-            <img
-              src="/images/2.jpeg"
-              className="block w-full h-[50vh] object-cover"
-              alt="Second slide"
-            />
-            <div className="absolute inset-x-[15%] bottom-5 py-5 text-center text-black">
-              <h5 className="text-xl font-bold">Second slide label</h5>
-              <p>
-                Some representative placeholder content for the second slide.
-              </p>
-            </div>
-          </TECarouselItem>
-
-          {/* Slide 3 */}
-          <TECarouselItem itemID={3} className="relative w-full shrink-0">
-            <img
-              src="/images/3.jpeg"
-              className="block w-full h-[50vh] object-cover"
-              alt="Third slide"
-            />
-            <div className="absolute inset-x-[15%] bottom-5 py-5 text-center text-black">
-              <h5 className="text-xl font-bold">Third slide label</h5>
-              <p>
-                Some representative placeholder content for the third slide.
-              </p>
-            </div>
-          </TECarouselItem>
-        </div>
-      </TECarousel>
-    </>
+        ))}
+      </div>
+    </TECarousel>
   );
 };
 
