@@ -25,20 +25,20 @@ const Navbar = () => {
             <ul className="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0">
               <li>
                 <NavLink
-                  className="inline-block no-underline hover:text-black hover:underline py-2 px-4"
+                  className="inline-block no-underline hover:text-black py-2 px-4"
                   to="/"
                   href="#store"
                 >
                   {" "}
-                  Shop
+                  Магазин
                 </NavLink>
               </li>
               <li>
                 <a
-                  className="inline-block no-underline hover:text-black hover:underline py-2 px-4"
+                  className="inline-block no-underline hover:text-black py-2 px-4 "
                   href="#about"
                 >
-                  About
+                  Контакти
                 </a>
               </li>
             </ul>
@@ -47,10 +47,10 @@ const Navbar = () => {
         <div className="order-1 md:order-2">
           <a
             className="flex items-center tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl "
-            href="#"
+            href="/"
           >
             <svg
-              className="fill-current text-gray-800 mr-2"
+              className="fill-current text-gray-800 mr-2 hover:color-orange"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -76,11 +76,11 @@ const Navbar = () => {
           </a> */}
 
           <NavLink
-            className="pl-3 inline-block no-underline hover:text-black"
+            className="pl-3 inline-block no-underline hover:text-black hover:scale-125 transition-transform transform"
             to="/cart"
           >
             <svg
-              className="fill-current hover:text-black"
+              className="fill-current hover:text-black "
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"

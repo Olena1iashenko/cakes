@@ -16,9 +16,17 @@ const Cart = () => {
 
   return (
     <div className="p-6 max-w-3xl mx-auto">
-      <h1 className="text-2xl font-bold mb-4 text-center">Your Cart</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center">Кошик</h1>
       {cartItems.length === 0 ? (
-        <p className="text-center text-gray-500">No items in cart.</p>
+        <p className="text-center text-gray-500">
+          Кошик порожній,{" "}
+          <a
+            className="inline-block no-underline leading-relaxed hover:text-black hover:border-black"
+            href="/"
+          >
+            виправити це :)
+          </a>
+        </p>
       ) : (
         <div className="space-y-4 gap-2">
           {cartItems.map((item) => (
@@ -55,7 +63,7 @@ const Cart = () => {
                   </button>
                 </div>
                 <button
-                  className="text-red-500 hover:text-red-700 mt-2 sm:mt-0"
+                  className="text-gray-600 hover:text-gray-700 mt-2 sm:mt-0"
                   onClick={() => dispatch(removeFromCart(item.id))}
                 >
                   Remove
@@ -67,7 +75,7 @@ const Cart = () => {
             Total: ${total.toFixed(2)}
           </div>
           <button
-            className="w-full bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 mt-4"
+            className="w-full bg-orange text-white font-bold py-2 px-4 rounded-md hover:bg-#646cff mt-4"
             onClick={() => dispatch(clearCart())}
           >
             Clear Cart
