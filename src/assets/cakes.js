@@ -24,8 +24,8 @@ const cakes = [
     productName: "Red Velvet Cranberry Cake",
     price: 130,
     images: [
-      "../../public/images/red-velvet-1.jpeg.jpeg",
-      "../../public/images/red-velvet-2.jpeg.jpeg",
+      "../../public/images/red-velvet-1.jpeg",
+      "../../public/images/red-velvet-2.jpeg",
     ],
   },
 ];
