@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // This uses localStorage for web
 import cartReducer from "./cartSlice";
+import filterReducer from "./filterSlice";
 import {
   FLUSH,
   REHYDRATE,
@@ -22,6 +23,7 @@ const persistedCartReducer = persistReducer(persistConfig, cartReducer);
 const store = configureStore({
   reducer: {
     cart: persistedCartReducer,
+    filter: filterReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
