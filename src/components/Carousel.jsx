@@ -6,20 +6,23 @@ const slides = [
   {
     id: 1,
     src: "/images/1.jpeg",
-    label: "First Slide Label",
-    content: "Some representative placeholder content for the first slide.",
+    label: "Red Velvet",
+    content:
+      "Какао бісквіт з ніжним вершковим крем-чізом та журавлиново-апельсиновим конфі",
   },
   {
     id: 2,
     src: "/images/2.jpeg",
-    label: "Second Slide Label",
-    content: "Some representative placeholder content for the second slide.",
+    label: "Pumpkin Latte",
+    content:
+      "Гарбузовий пряний бісквіт з карамельно-гарбузовим прошарком і масляним крем-чіз кремом",
   },
   {
     id: 3,
     src: "/images/3.jpeg",
-    label: "Third Slide Label",
-    content: "Some representative placeholder content for the third slide.",
+    label: "Chocolste Cherry Brownie",
+    content:
+      "Шоколадний брауні торт з шоколадним крем-чіз кремом та вишневим конфі",
   },
 ];
 

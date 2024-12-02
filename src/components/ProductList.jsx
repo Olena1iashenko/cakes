@@ -76,8 +76,11 @@ const ProductList = () => {
                   {likeIcon}
                 </div>
                 <p className="pt-1 text-gray-900">₴{product.price}</p>
-                <button onClick={() => dispatch(addToCart(product))}>
-                  Add to Cart
+                <button
+                  className=" text-gray-900 font-bold bg-[#0b6730c2]"
+                  onClick={() => dispatch(addToCart(product))}
+                >
+                  Додати в кошик
                 </button>
               </li>
             ))}
