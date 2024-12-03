@@ -1,8 +1,8 @@
-import { useDispatch } from "react-redux";
-import { useState } from "react";
-import { addToCart } from "../redux/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setSearchQuery, setSelectedCategory } from "../redux/filterSlice";
+import { addToCart, toggleFavorite } from "../redux/cartSlice";
 import cakes from "../assets/cakes";
-import { likeIcon } from "../assets/icons";
+import { likeIcon, likedIcon } from "../assets/icons";
 import Carousel from "./Carousel";
 import Footer from "./Footer";
 import StoreNav from "./StoreNav";
@@ -10,6 +10,26 @@ import Slider from "react-slick";
 
 const ProductList = () => {
   const dispatch = useDispatch();
+  const { searchQuery, selectedCategory } = useSelector(
+    (state) => state.filter
+  );
+
+  const favorites = useSelector((state) => state.cart.favorites);
+
+  const filteredCakes = cakes.filter(
+    (cake) =>
+      cake.productName.toLowerCase().includes(searchQuery.toLowerCase()) &&
+      (!selectedCategory ||
+        (selectedCategory === "favorites" && favorites.includes(cake.id)) ||
+        cake.category === selectedCategory)
+  );
+
+  const handleToggleFavorite = (productId) => {
+    dispatch(toggleFavorite(productId));
+  };
+  const handleSearchChange = (query) => dispatch(setSearchQuery(query));
+  const handleCategoryChange = (category) =>
+    dispatch(setSelectedCategory(category));
 
   // Custom Previous Arrow
   const PrevArrow = ({ onClick }) => (
@@ -47,9 +67,14 @@ const ProductList = () => {
       <Carousel />
       <section className="bg-white py-8">
         <div className="container mx-auto flex items-center flex-wrap pt-4 pb-12">
-          <StoreNav />
+          <StoreNav
+            searchQuery={searchQuery}
+            onSearchChange={handleSearchChange}
+            selectedCategory={selectedCategory}
+            onCategoryChange={handleCategoryChange}
+          />
           <ul className="grid md:grid-cols-3 xl:grid-cols-4 gap-6">
-            {cakes.map((product) => (
+            {filteredCakes.map((product) => (
               <li key={product.id} className="relative p-4 flex flex-col group">
                 <div className="relative">
                   <Slider {...settings}>
@@ -73,7 +98,12 @@ const ProductList = () => {
                   >
                     {product.productName}
                   </h3>
-                  {likeIcon}
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => handleToggleFavorite(product.id)}
+                  >
+                    {favorites.includes(product.id) ? likedIcon : likeIcon}
+                  </div>
                 </div>
                 <p className="pt-1 text-gray-900">₴{product.price}</p>
                 <button

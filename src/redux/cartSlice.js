@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  items: [],
+  items: [], // Cart items
+  favorites: [], // List of favorite product IDs
 };
 
 const cartSlice = createSlice({
@@ -14,6 +15,14 @@ const cartSlice = createSlice({
         item.count += 1;
       } else {
         state.items.push({ ...action.payload, count: 1 });
+      }
+    },
+    toggleFavorite: (state, action) => {
+      const productId = action.payload;
+      if (state.favorites.includes(productId)) {
+        state.favorites = state.favorites.filter((id) => id !== productId);
+      } else {
+        state.favorites.push(productId);
       }
     },
     incrementItemCount: (state, action) => {
@@ -43,6 +52,7 @@ const cartSlice = createSlice({
 
 export const {
   addToCart,
+  toggleFavorite,
   incrementItemCount,
   decrementItemCount,
   removeFromCart,

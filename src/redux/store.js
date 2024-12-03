@@ -15,7 +15,7 @@ import {
 const persistConfig = {
   key: "cart",
   storage,
-  whitelist: ["items"],
+  whitelist: ["items", "favorites"],
 };
 
 const persistedCartReducer = persistReducer(persistConfig, cartReducer);

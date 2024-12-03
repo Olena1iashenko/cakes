@@ -41,7 +41,7 @@ const Cart = () => {
               </div>
 
               <div className="flex items-center gap-2 ml-4">
-                <p className="text-gray-600">Price: ${item.price}</p>
+                <p className="text-gray-600">Ціна: ₴{item.price}</p>
 
                 <div className="flex items-center gap-2 mt-2 sm:mt-0">
                   <button
@@ -66,19 +66,19 @@ const Cart = () => {
                   className="text-gray-600 hover:text-gray-700 mt-2 sm:mt-0"
                   onClick={() => dispatch(removeFromCart(item.id))}
                 >
-                  Remove
+                  Видалити
                 </button>
               </div>
             </div>
           ))}
           <div className="text-lg font-bold mt-6 text-right">
-            Total: ${total.toFixed(2)}
+            Загальна сума: ₴{total.toFixed(2)}
           </div>
           <button
-            className="w-full bg-orange text-white font-bold py-2 px-4 rounded-md hover:bg-#646cff mt-4"
+            className="w-full bg-red-500 text-white font-bold py-2 px-4 rounded-md hover:bg-#646cff mt-4"
             onClick={() => dispatch(clearCart())}
           >
-            Clear Cart
+            Очистити кошик
           </button>
         </div>
       )}
