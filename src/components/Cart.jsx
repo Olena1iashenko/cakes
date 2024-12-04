@@ -63,7 +63,7 @@ const Cart = () => {
                   </button>
                 </div>
                 <button
-                  className="text-gray-600 hover:text-gray-700 mt-2 sm:mt-0"
+                  className="text-white font-bold bg-red-500 hover:bg-#646cff mt-2 sm:mt-0"
                   onClick={() => dispatch(removeFromCart(item.id))}
                 >
                   Видалити

@@ -65,7 +65,7 @@ const ProductList = () => {
   return (
     <>
       <Carousel />
-      <section className="bg-white py-8">
+      <section className=" py-8">
         <div className="container mx-auto flex items-center flex-wrap pt-4 pb-12">
           <StoreNav
             searchQuery={searchQuery}
@@ -94,7 +94,7 @@ const ProductList = () => {
                 <div className="pt-3 flex items-center justify-between mt-2">
                   <h3
                     title={product.productName}
-                    className="truncate overflow-hidden whitespace-nowrap max-w-[200px] hover:overflow-auto hover:whitespace-normal bg-white relative z-20"
+                    className="truncate overflow-hidden whitespace-nowrap max-w-[200px] text-gray-800 hover:overflow-auto hover:whitespace-normal relative z-20"
                   >
                     {product.productName}
                   </h3>
@@ -107,7 +107,7 @@ const ProductList = () => {
                 </div>
                 <p className="pt-1 text-gray-900">₴{product.price}</p>
                 <button
-                  className=" text-gray-900 font-bold bg-[#0b6730c2]"
+                  className=" text-white font-bold bg-orange-400 hover:bg-[#0b6730c2]"
                   onClick={() => dispatch(addToCart(product))}
                 >
                   Додати в кошик

@@ -11,7 +11,7 @@ const StoreNav = ({
           className="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl "
           href="#"
         >
-          Store
+          Наявність
         </a>
 
         <div className="flex items-center" id="store-nav-content">
@@ -32,9 +32,9 @@ const StoreNav = ({
             >
               <option value="">Всі категорії</option>
               <option value="favorites">Улюблені</option>
-              <option value="cakes">Cakes</option>
-              <option value="pastries">Pastries</option>
-              <option value="cookies">Cookies</option>
+              {/* <option value="cakes">Торти</option>
+              <option value="pastries">Тістечка</option>
+              <option value="cookies">Печиво</option> */}
             </select>
           </div>
 
