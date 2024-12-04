@@ -20,7 +20,7 @@ const slides = [
   {
     id: 3,
     src: "/images/3.jpeg",
-    label: "Chocolste Cherry Brownie",
+    label: "Chocolate Cherry Brownie",
     content:
       "Шоколадний брауні торт з шоколадним крем-чіз кремом та вишневим конфі",
   },
