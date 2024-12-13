@@ -41,19 +41,26 @@ function Carousel() {
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto">
+    <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <Slider {...settings}>
         {slides.map((slide) => (
-          <div key={slide.id} className="relative h-96">
+          <div
+            key={slide.id}
+            className="relative h-64 sm:h-80 md:h-96 mx-auto w-full max-w-5xl"
+          >
             <img
               src={slide.src}
               onError={(e) => (e.target.src = "/images/placeholder.jpeg")}
               alt={slide.label}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-x-0 bottom-5 text-center text-white bg-black bg-opacity-50 p-4">
-              <h5 className="text-xl font-bold">{slide.label}</h5>
-              <p>{slide.content}</p>
+            <div className="absolute inset-x-0 bottom-0 text-center text-white bg-black bg-opacity-50 p-4 md:p-6 lg:p-8 min-h-[60px] md:min-h-[80px] lg:min-h-[100px] max-h-[140px] overflow-hidden flex flex-col justify-center">
+              <h5 className="text-lg sm:text-xl md:text-2xl font-bold truncate">
+                {slide.label}
+              </h5>
+              <p className="text-sm sm:text-base md:text-lg overflow-ellipsis overflow-hidden break-words">
+                {slide.content}
+              </p>
             </div>
           </div>
         ))}

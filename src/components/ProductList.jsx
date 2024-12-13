@@ -65,7 +65,7 @@ const ProductList = () => {
   return (
     <>
       <Carousel />
-      <section className=" py-8">
+      <section className="m-auto py-8">
         <div className="container mx-auto flex items-center flex-wrap pt-4 pb-12">
           <StoreNav
             searchQuery={searchQuery}
@@ -73,7 +73,7 @@ const ProductList = () => {
             selectedCategory={selectedCategory}
             onCategoryChange={handleCategoryChange}
           />
-          <ul className="grid md:grid-cols-3 xl:grid-cols-4 gap-6">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredCakes.map((product) => (
               <li key={product.id} className="relative p-4 flex flex-col group">
                 <div className="relative">
