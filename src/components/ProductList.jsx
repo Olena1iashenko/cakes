@@ -7,6 +7,7 @@ import Carousel from "./Carousel";
 import Footer from "./Footer";
 import StoreNav from "./StoreNav";
 import Slider from "react-slick";
+import { Link } from "react-router-dom";
 
 const ProductList = () => {
   const dispatch = useDispatch();
@@ -76,39 +77,53 @@ const ProductList = () => {
           <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredCakes.map((product) => (
               <li key={product.id} className="relative p-4 flex flex-col group">
-                <div className="relative">
-                  <Slider {...settings}>
-                    {product.images.map((image, index) => (
-                      <img
-                        key={index}
-                        src={image}
-                        alt={`${product.productName} - ${index + 1}`}
-                        onError={(e) =>
-                          (e.target.src = "/images/placeholder.jpeg")
-                        }
-                        className="object-cover h-64 w-full"
-                      />
-                    ))}
-                  </Slider>
-                </div>
+                <Link
+                  to={`/product/${product.id}`}
+                  className="flex-1"
+                  title={product.productName}
+                >
+                  <div className="relative">
+                    <Slider {...settings}>
+                      {product.images.map((image, index) => (
+                        <img
+                          key={index}
+                          src={image}
+                          alt={`${product.productName} - ${index + 1}`}
+                          onError={(e) =>
+                            (e.target.src = "/images/placeholder.jpeg")
+                          }
+                          className="object-cover h-64 w-full"
+                        />
+                      ))}
+                    </Slider>
+                  </div>
+                  <div className="pt-3">
+                    <h3
+                      title={product.productName}
+                      className="truncate overflow-hidden whitespace-nowrap max-w-[200px] text-gray-800 hover:overflow-auto hover:whitespace-normal relative z-20"
+                    >
+                      {product.productName}
+                    </h3>
+                  </div>
+                </Link>
                 <div className="pt-3 flex items-center justify-between mt-2">
-                  <h3
-                    title={product.productName}
-                    className="truncate overflow-hidden whitespace-nowrap max-w-[200px] text-gray-800 hover:overflow-auto hover:whitespace-normal relative z-20"
-                  >
-                    {product.productName}
-                  </h3>
                   <div
                     className="cursor-pointer"
-                    onClick={() => handleToggleFavorite(product.id)}
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent navigation
+                      handleToggleFavorite(product.id);
+                    }}
                   >
                     {favorites.includes(product.id) ? likedIcon : likeIcon}
                   </div>
+                  <p className="text-gray-900">₴{product.price}</p>
                 </div>
-                <p className="pt-1 text-gray-900">₴{product.price}</p>
                 <button
-                  className=" text-white font-bold bg-orange-400 hover:bg-[#0b6730c2]"
-                  onClick={() => dispatch(addToCart(product))}
+                  className="text-white font-bold bg-orange-400 hover:bg-[#0b6730c2] mt-2"
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent navigation
+                    dispatch(addToCart(product));
+                  }}
                 >
                   Додати в кошик
                 </button>
