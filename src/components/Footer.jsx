@@ -5,19 +5,33 @@ const Footer = () => {
       className="container mx-auto py-8 border-t border-gray-400"
     >
       <div className="container flex px-16 py-8">
-        <div className="w-full mx-auto flex flex-wrap">
-          <div className="flex w-2/3 ">
+        <div className="justify-between w-full mx-auto flex flex-wrap">
+          <div className="flex  w-full md:w-2/5 ">
             <div className="px-3 md:px-0">
-              <h3 className="font-bold text-gray-900">Про нас</h3>
-              <p className="py-4">
-                Цей магазинчик створено любителькою солодкого для таких самих
-                солодкоїжок) Тому всі десерти приготовано з любовʼю та з
-                найякісніших продуктів. Асортимент постійно доповнюється та
-                змінюється, тому слідкуйте за навністю) далі буде...
-              </p>
+              <div>
+                <h3 className="font-bold text-gray-900">Про нас</h3>
+                <p className="py-4">
+                  Цей магазинчик створено любителькою солодкого для таких самих
+                  солодкоїжок) Тому всі десерти приготовано з любовʼю та з
+                  найякісніших продуктів. Асортимент постійно доповнюється та
+                  змінюється, тому слідкуйте за навністю) далі буде...
+                </p>
+              </div>
             </div>
           </div>
-          <div className="flex w-1/3 lg:justify-end lg:text-right mt-6 md:mt-0">
+          <div className="flex justify-center my-4 w-full md:w-1/5">
+            <video
+              className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full shadow-lg border-4 border-orange-400"
+              autoPlay
+              loop
+              muted
+              playsInline
+            >
+              <source src="/videos/review.mp4" type="video/mp4" />
+              Ваш браузер не підтримує відео.
+            </video>
+          </div>
+          <div className="flex  lg:justify-end lg:text-right mt-6 md:mt-0">
             <div className="px-3 md:px-0">
               <h3 className="text-center font-bold text-gray-900">Контакти</h3>
               <div className="w-full flex items-center py-4 mt-0">
